@@ -35,7 +35,7 @@ func (this *FenwickTree) Update(index int, val int)  {
     */
     delta:=val-this.nums[index]
     this.nums[index]=val
-    for i:=index+1;i<len(this.bit);i+=i&-i{
+    for i:=index;i<len(this.bit);i+=i&-i{
         this.bit[i]+=delta
     }
 }
@@ -46,7 +46,7 @@ func (this *FenwickTree) Sum(index int) int {
       Complexity: O(logn)
     */
     ans:=0
-    for i:=index+1;i>0;i-=i&-i{
+    for i:=index;i>0;i-=i&-i{
         ans+=this.bit[i]
     }
     return ans
